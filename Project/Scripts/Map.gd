@@ -1,8 +1,8 @@
 extends Node2D
 
-var tiles : Array 
+var tiles : Array #holds tile names 
 var grid : Array #holds all tile positions 
-var tile_types : Array 
+var tile_types : Array #holds the actual tile objects
 var tileSize : int  = 64
 var screen_width = 640	
 var screen_height = 512
