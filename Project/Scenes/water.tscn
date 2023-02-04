@@ -8,3 +8,6 @@ elementTexture = ExtResource( 2 )
 infantTexture = ExtResource( 2 )
 infantTileName = "water"
 evolvedTileName = "water"
+grown = true
+scoreName = PoolStringArray( "deer" )
+scoreGiven = PoolIntArray( 10 )
