@@ -11,8 +11,14 @@ config_version=4
 [application]
 
 config/name="Branching Out"
-run/main_scene="res://TextPopup.tscn"
+
+run/main_scene="res://Board.tscn"
+
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=800
 
 [gui]
 
