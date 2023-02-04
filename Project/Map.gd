@@ -1,16 +1,18 @@
-extends Area2D
-
+extends Node2D
 
 var tiles : Array 
 var grid : Array #holds all tile positions 
-var screen_width = 800
-var screen_height = 600
-var width = screen_width/40
-var height = screen_height/40
-var tileSize : int  = 40
-var tileEffectRange = 2
-var clickedTile = "placeholder"
+var tileSize : int  = 64
+var screen_width = 640	
+var screen_height = 512
+var width = screen_width/tileSize
+var height = screen_height/tileSize
 
+var tileEffectRange = 2
+var clickedTile = "Grass"
+
+
+var Tile = preload("res://Tile.tscn")
 
 func get_tile_at():
 	return
@@ -24,7 +26,7 @@ func highlight_free():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init_grid()
-	print(tiles)
+	#populate_board()
 	return 
 
 #get type from clicked tile (from available tiles to place on board) 
@@ -72,11 +74,19 @@ func init_grid():
 			grid[x].append([])
 			grid[x][y] = Vector2(x*tileSize, y*tileSize)	
 			tiles[x].append([])
-			tiles[x][y] = "grass"
+			tiles[x][y] = "Grass"
+
+func populate_board():
+	for x in range(width):
+		for y in range(height):
+			var tile_to_add = Tile.instance() 
+			tile_to_add.position = grid[x][y]
+			add_child(tile_to_add)
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if within_x_bounds(get_viewport().get_mouse_position().x) and within_y_bounds(get_viewport().get_mouse_position().y): 
+			spawn_tile()
 			tile_placed(get_viewport().get_mouse_position().x, get_viewport().get_mouse_position().y, clickedTile)
 	
 
@@ -85,3 +95,9 @@ func within_x_bounds(x):
 	
 func within_y_bounds(y):
 	return y > 0 and y <= screen_height 
+
+
+func spawn_tile():
+	var tile_to_place = Tile.instance()
+	tile_to_place.position = Vector2(floor(get_viewport().get_mouse_position().x/tileSize)*tileSize, floor(get_viewport().get_mouse_position().y/tileSize)*tileSize)
+	add_child(tile_to_place)

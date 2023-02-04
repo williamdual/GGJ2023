@@ -3,7 +3,7 @@ extends Node2D
 #Sprite Stuff
 export var elementTexture = "Sprites/"
 export var infantTexture = "Sprites/"
-var grassTexture = "grassLocation"
+var grassTexture = "res://Sprites/Grass.png"
 var score = 0
 #state management
 export var infantTileName:String = "name"
@@ -31,7 +31,7 @@ export var raffleNumsToAdd:PoolIntArray = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tileName = infantTileName
-	$Sprite.texture = infantTexture
+	#$Sprite.texture = infantTexture
 	add_to_group("Tiles")
 	if(isGrass):
 		$Sprite.texture = grassTexture
@@ -47,7 +47,7 @@ func search(): #accesses the grid and grabs the positions of all tiles to see if
 func grow(): 
 	#need to unlock score
 	tileName = evolvedTileName
-	$Sprite.texture = elementTexture
+	#$Sprite.texture = elementTexture
 	grown = true 
 	updateScore(score)
 	#tell game manager to add raffle if needed
@@ -91,3 +91,14 @@ func getPos() -> Array:
 	return pos
 func getType():
 	return tileType
+
+
+func _on_Area2D_mouse_entered():
+	print("entered")
+	$Area2D/Hightlight.visible = true
+	
+
+
+func _on_Area2D_mouse_exited():
+	print("entered")
+	$Area2D/Hightlight.visible = false
