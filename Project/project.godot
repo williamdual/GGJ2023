@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Branching Out"
-run/main_scene="res://Scenes/Board.tscn"
+run/main_scene="res://TextPopup.tscn"
 config/icon="res://icon.png"
 
 [display]

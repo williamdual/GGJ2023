@@ -1,8 +1,8 @@
 extends Node2D
 
 #Sprite Stuff
-export var elementTexture = "Sprites/"
-export var infantTexture = "Sprites/"
+export (Texture) var elementTexture
+export (Texture) var infantTexture
 var grassTexture = "res://Sprites/Grass.png"
 var score = 0
 #state management
