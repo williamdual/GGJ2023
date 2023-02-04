@@ -19,6 +19,7 @@ texture = ExtResource( 2 )
 position = Vector2( 32, 32 )
 
 [node name="Hightlight" type="Sprite" parent="Area2D"]
+visible = false
 show_behind_parent = true
 texture = ExtResource( 3 )
 
