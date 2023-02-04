@@ -12,7 +12,7 @@ var tileEffectRange = 2
 var clickedTile = "Grass"
 
 
-var Tile = preload("res://Tile.tscn")
+var Tile = preload("res://Scenes/Tile.tscn")
 
 func get_tile_at():
 	return

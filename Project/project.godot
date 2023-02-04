@@ -10,7 +10,8 @@ config_version=4
 
 [application]
 
-run/main_scene="res://Board.tscn"
+config/name="Branching Out"
+run/main_scene="res://Scenes/Board.tscn"
 config/icon="res://icon.png"
 
 [display]

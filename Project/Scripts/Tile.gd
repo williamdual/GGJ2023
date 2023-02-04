@@ -94,11 +94,7 @@ func getType():
 
 
 func _on_Area2D_mouse_entered():
-	print("entered")
 	$Area2D/Hightlight.visible = true
-	
-
 
 func _on_Area2D_mouse_exited():
-	print("entered")
 	$Area2D/Hightlight.visible = false
