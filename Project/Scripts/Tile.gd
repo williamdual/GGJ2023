@@ -9,8 +9,8 @@ var score = 0
 export var infantTileName:String = "name"
 export var evolvedTileName:String = "name"
 var tileName
-var grown = false
-export var isGrass = false
+export var grown = false
+var isGrass = false
 var hasElement = false
 var pos = []
 var numTiles = 1 #number of this tile on the board
