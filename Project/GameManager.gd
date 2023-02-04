@@ -8,7 +8,7 @@ var handSize = 3
 var rng = RandomNumberGenerator.new()
 
 #choice stuff
-var spritePath = "Sprites/" #fill this in
+var spritePath = "res://Sprites/ElementSprites/" #fill this in
 var choice = load("res://Choice.tscn")
 
 #GM stuff
