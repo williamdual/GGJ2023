@@ -24,7 +24,7 @@ texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="ChoiceBackgroundSprite"]
 show_behind_parent = true
-position = Vector2( -0.909378, 16.8551 )
+position = Vector2( -0.909378, -3.85262 )
 scale = Vector2( 4.99216, 1.39028 )
 texture = SubResource( 2 )
 
