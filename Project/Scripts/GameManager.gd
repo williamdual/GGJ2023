@@ -133,7 +133,7 @@ func playEvolveSound():
 	$EvolutionStreamPlayer.play()
 	for i in range(5):
 		if $ChoiceBackgroundSprite/Roots.position.x < -10:
-			$ChoiceBackgroundSprite/Roots.position.x +=1
+			$ChoiceBackgroundSprite/Roots.position.x += get_viewport().get_visible_rect().size.x/640
 			yield(get_tree().create_timer(.1), "timeout")
 
 
