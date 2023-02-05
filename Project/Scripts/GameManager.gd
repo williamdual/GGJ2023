@@ -27,8 +27,8 @@ signal unclicked
 func _ready():
 	win_size = get_viewport().get_visible_rect().size
 	#choice background stuff
-	get_node("ChoiceBackgroundSprite").global_position = Vector2(win_size.x/2, win_size.y-46)
-	get_node("ChoiceBackgroundSprite").scale = Vector2(2,2)
+	get_node("ChoiceBackgroundSprite").global_position = Vector2(win_size.x/2, win_size.y-60)
+	get_node("ChoiceBackgroundSprite").scale = Vector2(3,3)
 	#signal connections
 	#connect("add_to_raffle", self,  "addLoto")
 	#connect("add_score", self, "addToScore")
@@ -54,7 +54,7 @@ func drawHand():
 	for i in handSize:
 		var child = choice.instance()
 		child.get_node("Sprite").texture = load(spritePath+"/"+str(currentHand[cntr])+".png")
-		child.global_position = Vector2((win_size.x/2)-80+(cntr*80), win_size.y-50)
+		child.global_position = Vector2((win_size.x/2)-80+(cntr*80), win_size.y-60)
 		child.get_node("Sprite").scale = Vector2(4,4)
 		child.setName(currentHand[i]) #name of element
 		child.name = "choice"+str(currentHand[i]) #name of node in godot editor

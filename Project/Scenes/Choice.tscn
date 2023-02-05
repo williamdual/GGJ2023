@@ -15,6 +15,7 @@ scale = Vector2( 2.1442, 1.47295 )
 z_index = 1
 
 [node name="GrassSprite" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
