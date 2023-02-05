@@ -67,11 +67,12 @@ func canGrow() -> bool: #checks all of the conditions agenst the map
 #update score!
 func newTileWithinRange(newTile, tileRange):
 	#is this tile relevant to me? evolve, score
+	$GrassSprite.visible = false
 	print(tileName + " got this tile within range " + str(tileRange) + ": " + newTile)
 	for i in range(evolveName.size()):
 		if(evolveName[i] == newTile and tileRange <= evolveRanges[i]):
 			currentEvolveTiles[i]+=1
-	if(not grown):
+	if(not grown and not(tileName == "Grass")):
 		if(canGrow()):
 			grow()
 	for i in range(scoreName.size()):

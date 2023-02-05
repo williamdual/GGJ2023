@@ -56,14 +56,14 @@ func tile_placed(x,y,name):
 	var surroundingTiles : Array = []
 	x-=2
 	y-=2
-	for i in range(tileEffectRange*2):
-		for j in range(tileEffectRange*2):
-			if (x<0) or (x>= width) or (y<0) or (y >= height):
+	for i in range((tileEffectRange*2)+1):
+		for j in range((tileEffectRange*2)+1):
+			if (x+i<0) or (x+i>= width) or (y+j<0) or (y+j >= height) or ((x+i) == arrayx && y+j == arrayy):
 				continue
-			if tile_types[x][y].getName() != "Grass":
-				tile_types[x][y].newTileWithinRange(name, min(abs(x),abs(y)))
+			#if tile_types[x+i][y+j].getName() != "Grass":
+			tile_types[x+i][y+j].newTileWithinRange(name, max(abs(x+i - arrayx),abs(y+j - arrayy)))
 			#new tile gets affected too
-			tile_types[arrayx][arrayy].newTileWithinRange(tile_types[x][y].getName(), (min(abs(x), abs(y))))
+			tile_types[arrayx][arrayy].newTileWithinRange(tile_types[x+i][y+j].getName(), max(abs(x+i - arrayx),abs(y+j - arrayy)))
 
 	clickedTile = ""
 	emit_signal("element_placed")
