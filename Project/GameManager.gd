@@ -35,6 +35,7 @@ func startTurn():
 func setTimerForNextTurn():
 	$TurnTimer.start(2);
 
+#hide haha
 func drawHand():
 	var cntr = 0
 	var win_size = get_viewport().get_visible_rect().size
