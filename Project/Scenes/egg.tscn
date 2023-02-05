@@ -9,6 +9,7 @@ elementTexture = ExtResource( 3 )
 infantTexture = ExtResource( 1 )
 infantTileName = "egg"
 evolvedTileName = "bird"
+grown = true
 evolveName = PoolStringArray( "tree" )
 evolveRequiredAmounts = PoolIntArray( 1 )
 evolveRanges = PoolIntArray( 2 )
