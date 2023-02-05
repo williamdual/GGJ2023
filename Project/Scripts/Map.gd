@@ -5,13 +5,16 @@ var grid : Array #holds all tile positions
 var tile_types : Array #holds the actual tile objects
 var tileSize : int  = 64
 var screen_width :int 
-var screen_height = 512
+var screen_height : int
 var width : int 
 var height : int  
 
 var tileEffectRange = 2
 var clickedTile = "Tile"
 var Tile = preload("res://Scenes/Tile.tscn")
+
+var choosing = false
+
 
 signal player_chose
 
@@ -22,7 +25,6 @@ func get_tile_at():
 func highlight_free():
 	for x in range(width):
 		for y in range(height):
-			print(tile_types[x][y].getName())
 			if tile_types[x][y].getName() == "Grass":
 				tile_types[x][y].highlight_on()
 			
@@ -42,6 +44,7 @@ func _ready():
 #get type from clicked tile (from available tiles to place on board) 
 func set_clicked(type):
 	clickedTile = type 
+	choosing = true
 	print(clickedTile)
 	return
 
@@ -58,9 +61,9 @@ func tile_placed(x,y,name):
 		for j in range(tileEffectRange*2):
 			if (x<0) or (x>= width) or (y<0) or (y >= height):
 				continue
-			tile_types[x][y].new_tile_in_range(name, min(abs(x),abs(y)))
+			tile_types[x][y].newTileWithinRange(name, min(abs(x),abs(y)))
 			#new tile gets affected too
-			tile_types[arrayx][arrayy].new_tile_in_range(name, min(abs(x), abs(y)))
+			tile_types[arrayx][arrayy].newTileWithinRange(name, (min(abs(x), abs(y))))
 
 	clickedTile = ""
 	emit_signal("element_placed")
@@ -104,12 +107,14 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if clickedTile == "":
 			return
-		var x_pos = get_viewport().get_mouse_position().x
-		var y_pos = get_viewport().get_mouse_position().y
-		if within_x_bounds(x_pos) and within_y_bounds(y_pos): 
-			if tiles[floor(x_pos)/tileSize][floor(y_pos)/tileSize]!= "Grass":
-				spawn_tile()
-				
+		if choosing: 
+			var x_pos = get_viewport().get_mouse_position().x
+			var y_pos = get_viewport().get_mouse_position().y
+			if within_x_bounds(x_pos) and within_y_bounds(y_pos): 
+				if tile_types[floor(x_pos)/tileSize][floor(y_pos)/tileSize].getName() == "Grass":
+					print("trying spawning")
+					spawn_tile()
+					choosing = !choosing
 	
 func within_x_bounds(x):
 	return x > 0 and x <= screen_width 
@@ -124,11 +129,18 @@ func spawn_tile():
 	var x_pos = floor(get_viewport().get_mouse_position().x/tileSize)
 	var y_pos = floor(get_viewport().get_mouse_position().y/tileSize)
 	tile_to_place.position = Vector2(x_pos*tileSize, y_pos*tileSize)
+	var tile_to_delete = tile_types[x_pos][y_pos]
+	print(tile_to_delete.getName())
 	tile_types[x_pos][y_pos] = tile_to_place
 	tiles[x_pos][y_pos] = clickedTile
 	add_child(tile_to_place)
+	
 	tile_placed(x_pos, y_pos, clickedTile)
 
 
 func _on_GameManager_player_chose(n):
 	set_clicked(n)
+
+func _process(delta):
+	if choosing: 
+		highlight_free()
