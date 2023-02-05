@@ -53,6 +53,7 @@ func pickElement(n):
 	for i in currentHand:
 		i = "choice"+i
 		if i != n:
+			get_node(i).checked = false 
 			get_node(i).get_node("Area2D").get_node("Hightlight").visible = false
 	emit_signal("player_chose", n)
 
