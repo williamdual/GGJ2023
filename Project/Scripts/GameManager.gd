@@ -41,10 +41,11 @@ func startTurn():
 
 func setTimerForNextTurn():
 	for i in currentHand:
-		get_node(i).queue_free()
+		print(i)
+		get_node("choice"+str(i)).queue_free()
 	currentHand.clear()
-	
-	$TurnTimer.start(2);
+	print(score)
+	$TurnTimer.start(.5);
 
 #hide haha
 func drawHand():

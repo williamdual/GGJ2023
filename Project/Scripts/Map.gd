@@ -16,7 +16,7 @@ var Tile = preload("res://Scenes/Tile.tscn")
 var choosing = false
 
 
-signal player_chose
+signal element_placed
 
 func get_tile_at():
 	return
@@ -45,7 +45,6 @@ func _ready():
 func set_clicked(type):
 	clickedTile = type 
 	choosing = true
-	print(clickedTile)
 	return
 
 
@@ -61,7 +60,8 @@ func tile_placed(x,y,name):
 		for j in range(tileEffectRange*2):
 			if (x<0) or (x>= width) or (y<0) or (y >= height):
 				continue
-			tile_types[x][y].newTileWithinRange(name, min(abs(x),abs(y)))
+			if tile_types[x][y].getName() != "Grass":
+				tile_types[x][y].newTileWithinRange(name, min(abs(x),abs(y)))
 			#new tile gets affected too
 			tile_types[arrayx][arrayy].newTileWithinRange(name, (min(abs(x), abs(y))))
 
@@ -104,7 +104,7 @@ func populate_board():
 			tile_types[x][y] = tile_to_add
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.pressed:
 		if clickedTile == "":
 			return
 		if choosing: 
@@ -112,7 +112,6 @@ func _input(event):
 			var y_pos = get_viewport().get_mouse_position().y
 			if within_x_bounds(x_pos) and within_y_bounds(y_pos): 
 				if tile_types[floor(x_pos)/tileSize][floor(y_pos)/tileSize].getName() == "Grass":
-					print("trying spawning")
 					spawn_tile()
 					choosing = !choosing
 	
@@ -130,11 +129,9 @@ func spawn_tile():
 	var y_pos = floor(get_viewport().get_mouse_position().y/tileSize)
 	tile_to_place.position = Vector2(x_pos*tileSize, y_pos*tileSize)
 	var tile_to_delete = tile_types[x_pos][y_pos]
-	print(tile_to_delete.getName())
 	tile_types[x_pos][y_pos] = tile_to_place
 	tiles[x_pos][y_pos] = clickedTile
 	add_child(tile_to_place)
-	
 	tile_placed(x_pos, y_pos, clickedTile)
 
 
