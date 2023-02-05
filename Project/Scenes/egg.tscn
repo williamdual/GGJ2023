@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/ElementSprites/bird.png" type="Texture" id=3]
 
-[node name="Tile" instance=ExtResource( 2 )]
+[node name="Tile2" instance=ExtResource( 2 )]
 elementTexture = ExtResource( 3 )
 infantTexture = ExtResource( 1 )
 infantTileName = "egg"

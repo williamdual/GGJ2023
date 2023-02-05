@@ -63,7 +63,7 @@ func tile_placed(x,y,name):
 			if tile_types[x][y].getName() != "Grass":
 				tile_types[x][y].newTileWithinRange(name, min(abs(x),abs(y)))
 			#new tile gets affected too
-			tile_types[arrayx][arrayy].newTileWithinRange(name, (min(abs(x), abs(y))))
+			tile_types[arrayx][arrayy].newTileWithinRange(tile_types[x][y].getName(), (min(abs(x), abs(y))))
 
 	clickedTile = ""
 	emit_signal("element_placed")

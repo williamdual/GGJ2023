@@ -34,16 +34,13 @@ func _ready():
 
 
 func startTurn():
-	print("sss")
 	drawLoto()
 	drawHand()
 
 func setTimerForNextTurn():
 	for i in currentHand:
-		print(i)
 		get_node("choice"+str(i)).queue_free()
 	currentHand.clear()
-	print(score)
 	$TurnTimer.start(.5);
 
 #hide haha
@@ -94,7 +91,6 @@ func initalizeLotoPool(): #named after adult stage, if has any
 	#etc etc
 
 func _on_Board_element_placed():
-	print("signal received")
 	setTimerForNextTurn()
 
 func _on_TurnTimer_timeout():

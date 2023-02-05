@@ -44,6 +44,7 @@ func _ready():
 
 #override this?
 func grow(): 
+	print(tileName + " is growing into " + evolvedTileName)
 	#need to unlock score
 	tileName = evolvedTileName
 	$Sprite.texture = elementTexture
@@ -60,17 +61,19 @@ func canGrow() -> bool: #checks all of the conditions agenst the map
 		if(currentEvolveTiles[i] < evolveRequiredAmounts[i]):
 			allGood = false
 			break
+	print(tileName + " can grow: " + str(allGood))
 	return allGood
 
 #update score!
 func newTileWithinRange(newTile, tileRange):
 	#is this tile relevant to me? evolve, score
+	print(tileName + " got this tile within range " + str(tileRange) + ": " + newTile)
 	for i in range(evolveName.size()):
 		if(evolveName[i] == newTile and tileRange <= evolveRanges[i]):
 			currentEvolveTiles[i]+=1
-	if(canGrow()):
-		print("growing")
-		grow()
+	if(not grown):
+		if(canGrow()):
+			grow()
 	for i in range(scoreName.size()):
 		if(scoreName[i] == newTile):
 			currentScoreTiles[i] += 1
