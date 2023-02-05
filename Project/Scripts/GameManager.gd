@@ -125,3 +125,7 @@ func playEvolveSound():
 	$EvolutionStreamPlayer.volume_db = 6
 	$EvolutionStreamPlayer.stream = evolveSound
 	$EvolutionStreamPlayer.play()
+
+
+func _on_BackgroundStreamPlayer_finished():
+	$BackgroundStreamPlayer.play()
