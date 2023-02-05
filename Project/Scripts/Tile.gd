@@ -31,6 +31,7 @@ export var raffleNumsToAdd:PoolIntArray = []
 signal add_score
 signal add_to_raffle
 signal element_evolved
+signal evolved
 
 #TODO ELEMENT_EVOLVED SIGNAL
 
@@ -40,6 +41,7 @@ func _ready():
 	connect("add_score", get_node("../../GameManager"), "addToScore")
 	connect("add_to_raffle", get_node("../../GameManager"),  "addLoto")
 	connect("element_evolved", get_node("../../GameManager"),  "playEvolveSound")
+	connect("evolved", get_node("../../Board"),  "elementEvolved")
 	tileName = infantTileName
 	$Sprite.texture = infantTexture
 	add_to_group("Tiles")
@@ -57,6 +59,7 @@ func grow():
 	updateScore(score)
 	#tell game manager to add raffle if needed
 	emit_signal("element_evolved")
+	emit_signal("evolved", name, tileName)
 	for i in range(raffleNamesToAdd.size()):
 		emit_signal("add_to_raffle", raffleNamesToAdd[i], raffleNumsToAdd[i])
 
@@ -92,6 +95,9 @@ func addScore(toAdd):
 #tells gameManager to update score by this amount
 func updateScore(byThisAmount):
 	emit_signal("add_score", byThisAmount)
+
+func setName(newName):
+	tileName = newName
 
 #GETTERS
 func getName() -> String:

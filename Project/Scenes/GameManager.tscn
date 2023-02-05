@@ -16,4 +16,9 @@ position = Vector2( 320, 466 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 15.0
+
+[node name="EvolutionStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="timeout" from="TurnTimer" to="." method="_on_TurnTimer_timeout"]

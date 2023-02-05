@@ -33,7 +33,7 @@ func highlight_free():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_width  = get_viewport().get_visible_rect().size.x	
-	screen_height = get_viewport().get_visible_rect().size.y 
+	screen_height = get_viewport().get_visible_rect().size.y - 100
 	width  = screen_width/tileSize
 	height = screen_height/tileSize
 	connect("player_chose",self, "set_clicked")
@@ -149,3 +149,11 @@ func highlight_none():
 		for y in range(height):
 			if tile_types[x][y].getName() == "Grass":
 				tile_types[x][y].highlight_off()
+
+func elementEvolved(elemName, elemTileName):
+	for i in range(width):
+		for j in range(height):
+			if(tile_types[i][j].name == elemName):
+				tile_types[i][j].setName(elemTileName)
+				tile_placed(i, j, elemTileName)
+#name, tilename

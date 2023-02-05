@@ -1,7 +1,7 @@
 extends Node2D
 
 var placementSound = load("res://Sounds/fishy.wav")
-var newRoundSound = load("res://Sounds/ceryp.wav")
+var newRoundSound = load("res://Sounds/cherp.wav")
 var selectElementSound = load("res://Sounds/selectElement.wav")
 var evolveSound = load("res://Sounds/construction.wav")
 
@@ -45,7 +45,7 @@ func setTimerForNextTurn():
 	for i in currentHand:
 		get_node("choice"+str(i)).queue_free()
 	currentHand.clear()
-	$TurnTimer.start(.5);
+	$TurnTimer.start(.95);
 	playPlacementSound()
 
 #hide haha
@@ -53,7 +53,6 @@ func drawHand():
 	var cntr = 0
 	for i in handSize:
 		var child = choice.instance()
-		print(str(spritePath+"/"+str(currentHand[cntr])+".png"))
 		child.get_node("Sprite").texture = load(spritePath+"/"+str(currentHand[cntr])+".png")
 		child.global_position = Vector2((win_size.x/2)-80+(cntr*80), win_size.y-50)
 		child.get_node("Sprite").scale = Vector2(4,4)
@@ -108,14 +107,18 @@ func _on_TurnTimer_timeout():
 	startTurn()
 
 func playPlacementSound():
+	$AudioStreamPlayer.volume_db = 15
 	$AudioStreamPlayer.stream = placementSound
 	$AudioStreamPlayer.play()
 func playNewRoundSound():
+	$AudioStreamPlayer.volume_db = -2
 	$AudioStreamPlayer.stream = newRoundSound
 	$AudioStreamPlayer.play()
 func playSelectElementSound():
+	$AudioStreamPlayer.volume_db = 15
 	$AudioStreamPlayer.stream = selectElementSound
 	$AudioStreamPlayer.play()
 func playEvolveSound():
-	$AudioStreamPlayer.stream = evolveSound
-	$AudioStreamPlayer.play()
+	$EvolutionStreamPlayer.volume_db = 12
+	$EvolutionStreamPlayer.stream = evolveSound
+	$EvolutionStreamPlayer.play()
