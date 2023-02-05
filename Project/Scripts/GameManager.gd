@@ -29,7 +29,7 @@ func _ready():
 	#choice background stuff
 	get_node("ChoiceBackgroundSprite").global_position = Vector2(win_size.x/2, win_size.y-60)
 	get_node("ChoiceBackgroundSprite").scale = Vector2(3,3)
-	#signal connections
+	$ChoiceBackgroundSprite/AnimationPlayer.play("Pulse")
 	#connect("add_to_raffle", self,  "addLoto")
 	#connect("add_score", self, "addToScore")
 	#connect("element_placed", self, "setTimerForNextTurn")
@@ -131,6 +131,10 @@ func playEvolveSound():
 	$EvolutionStreamPlayer.volume_db = 6
 	$EvolutionStreamPlayer.stream = evolveSound
 	$EvolutionStreamPlayer.play()
+	for i in range(5):
+		if $ChoiceBackgroundSprite/Roots.position.x < -10:
+			$ChoiceBackgroundSprite/Roots.position.x +=1
+			yield(get_tree().create_timer(.1), "timeout")
 
 
 func _on_BackgroundStreamPlayer_finished():
