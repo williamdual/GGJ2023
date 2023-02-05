@@ -110,18 +110,18 @@ func _on_TurnTimer_timeout():
 	startTurn()
 
 func playPlacementSound():
-	$AudioStreamPlayer.volume_db = -4
+	$AudioStreamPlayer.volume_db = 4
 	$AudioStreamPlayer.stream = placementSound
 	$AudioStreamPlayer.play()
 func playNewRoundSound():
-	$AudioStreamPlayer.volume_db = -24
+	$AudioStreamPlayer.volume_db = 0
 	$AudioStreamPlayer.stream = newRoundSound
 	$AudioStreamPlayer.play()
 func playSelectElementSound():
-	$AudioStreamPlayer.volume_db = 0
+	$AudioStreamPlayer.volume_db = 6
 	$AudioStreamPlayer.stream = selectElementSound
 	$AudioStreamPlayer.play()
 func playEvolveSound():
-	$EvolutionStreamPlayer.volume_db = 0
+	$EvolutionStreamPlayer.volume_db = 6
 	$EvolutionStreamPlayer.stream = evolveSound
 	$EvolutionStreamPlayer.play()
