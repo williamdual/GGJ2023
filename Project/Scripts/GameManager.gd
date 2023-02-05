@@ -4,7 +4,7 @@ var placementSound = load("res://Sounds/fishy.wav")
 var newRoundSound = load("res://Sounds/pop1.wav")
 var selectElementSound = load("res://Sounds/selectElt.wav")
 var evolveSound = load("res://Sounds/construction.wav")
-
+var gameOver = false
 #loto stuff
 var lotoPool = []
 var currentHand = []
@@ -106,11 +106,14 @@ func initalizeLotoPool(): #named after adult stage, if has any
 		lotoPool.append("seed")
 
 func _on_Board_element_placed():
-	setTimerForNextTurn()
+	if(not gameOver):
+		setTimerForNextTurn()
+	
 
 func _on_TurnTimer_timeout():
-	playNewRoundSound()
-	startTurn()
+	if(not gameOver):
+		playNewRoundSound()
+		startTurn()
 
 func playPlacementSound():
 	$AudioStreamPlayer.volume_db = 4
@@ -132,3 +135,7 @@ func playEvolveSound():
 
 func _on_BackgroundStreamPlayer_finished():
 	$BackgroundStreamPlayer.play()
+
+
+func _on_board_full():
+	gameOver = true
