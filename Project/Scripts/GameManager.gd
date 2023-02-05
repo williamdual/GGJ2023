@@ -9,7 +9,7 @@ var rng = RandomNumberGenerator.new()
 
 #choice stuff
 var spritePath = "res://Sprites/ElementSprites/" #fill this in
-var choice = load("res://Choice.tscn")
+var choice = load("res://Scenes/Choice.tscn")
 
 #GM stuff
 var score = 0
