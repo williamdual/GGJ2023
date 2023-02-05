@@ -33,6 +33,8 @@ signal add_to_raffle
 signal element_evolved
 signal evolved
 
+
+var Evolve = preload("res://Scenes/evolutionParticle.tscn")
 #TODO ELEMENT_EVOLVED SIGNAL
 
 # Called when the node enters the scene tree for the first time.
@@ -62,6 +64,9 @@ func grow():
 	emit_signal("evolved", name, tileName)
 	for i in range(raffleNamesToAdd.size()):
 		emit_signal("add_to_raffle", raffleNamesToAdd[i], raffleNumsToAdd[i])
+	var particle = Evolve.instance()
+	add_child(particle)
+	particle.restart()
 
 
 func canGrow() -> bool: #checks all of the conditions agenst the map
