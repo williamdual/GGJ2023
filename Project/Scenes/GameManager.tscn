@@ -13,6 +13,7 @@ one_shot = true
 autostart = true
 
 [node name="ChoiceBackgroundSprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 320, 466 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
