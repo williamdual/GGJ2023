@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Tile.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Grass.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/grass.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/highlight.png" type="Texture" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.5, 31.25 )
