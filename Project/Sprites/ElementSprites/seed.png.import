@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/riverbed0.png-9697c26cfe1559d5e82aee4ad61a20a3.stex"
+path="res://.import/seed.png-e785cf30da4819accfc604370a05b3fc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ElementSprites/riverbed0.png"
-dest_files=[ "res://.import/riverbed0.png-9697c26cfe1559d5e82aee4ad61a20a3.stex" ]
+source_file="res://Sprites/ElementSprites/seed.png"
+dest_files=[ "res://.import/seed.png-e785cf30da4819accfc604370a05b3fc.stex" ]
 
 [params]
 

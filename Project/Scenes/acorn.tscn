@@ -4,7 +4,11 @@
 [ext_resource path="res://Sprites/ElementSprites/tree.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Tile.tscn" type="PackedScene" id=3]
 
+<<<<<<< Updated upstream:Project/Scenes/acorn.tscn
 [node name="Tile" instance=ExtResource( 3 )]
+=======
+[node name="Tile2" instance=ExtResource( 3 )]
+>>>>>>> Stashed changes:Project/Scenes/Element Scenes/acorn.tscn
 elementTexture = ExtResource( 2 )
 infantTexture = ExtResource( 1 )
 infantTileName = "acorn"
@@ -14,7 +18,14 @@ evolveRequiredAmounts = PoolIntArray( 1 )
 evolveRanges = PoolIntArray( 1 )
 currentEvolveTiles = PoolIntArray( 0 )
 scoreName = PoolStringArray( "squirrel" )
+<<<<<<< Updated upstream:Project/Scenes/acorn.tscn
 scoreGiven = PoolIntArray( 20 )
 currentScoreTiles = PoolIntArray( 0 )
 raffleNamesToAdd = PoolStringArray( "squirrel" )
 raffleNumsToAdd = PoolIntArray( 5 )
+=======
+scoreGiven = PoolIntArray( 10 )
+currentScoreTiles = PoolIntArray( 0 )
+raffleNamesToAdd = PoolStringArray( "squirrel" )
+raffleNumsToAdd = PoolIntArray( 2 )
+>>>>>>> Stashed changes:Project/Scenes/Element Scenes/acorn.tscn

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/riverbed0.png-9697c26cfe1559d5e82aee4ad61a20a3.stex"
+path="res://.import/wolf.png-8707f83861828891f6f62835db8a3e70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ElementSprites/riverbed0.png"
-dest_files=[ "res://.import/riverbed0.png-9697c26cfe1559d5e82aee4ad61a20a3.stex" ]
+source_file="res://Sprites/ElementSprites/wolf.png"
+dest_files=[ "res://.import/wolf.png-8707f83861828891f6f62835db8a3e70.stex" ]
 
 [params]
 

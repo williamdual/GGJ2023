@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Element Scenes/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/ElementSprites/rabbit.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ElementSprites/bunny.png" type="Texture" id=3]
+
+[node name="Tile" instance=ExtResource( 1 )]
+elementTexture = ExtResource( 2 )
+infantTexture = ExtResource( 3 )
+infantTileName = "bunny"
+evolvedTileName = "rabbit"
+evolveName = PoolStringArray( "mushroom", "berry_bush" )
+evolveRequiredAmounts = PoolIntArray( 1, 1 )
+evolveRanges = PoolIntArray( 1, 1 )
+currentEvolveTiles = PoolIntArray( 0, 0 )
+scoreName = PoolStringArray( "rabbit" )
+scoreGiven = PoolIntArray( 30 )
+currentScoreTiles = PoolIntArray( 0 )
+raffleNamesToAdd = PoolStringArray( "mushroom" )
+raffleNumsToAdd = PoolIntArray( 1 )

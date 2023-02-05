@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/riverbed0.png-9697c26cfe1559d5e82aee4ad61a20a3.stex"
+path="res://.import/rootTipPlaceholder.png-3b1c66a59fd61266a24135e11453bc1c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ElementSprites/riverbed0.png"
-dest_files=[ "res://.import/riverbed0.png-9697c26cfe1559d5e82aee4ad61a20a3.stex" ]
+source_file="res://Sprites/ElementSprites/rootTipPlaceholder.png"
+dest_files=[ "res://.import/rootTipPlaceholder.png-3b1c66a59fd61266a24135e11453bc1c.stex" ]
 
 [params]
 

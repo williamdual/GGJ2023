@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Element Scenes/Tile.tscn" type="PackedScene" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/water.png-381437aaf66f5382afc55e012e1fd73e.stex"
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/water.png-381437aaf66f5382afc55e012e1fd73e.stex"
+
+[node name="Tile" instance=ExtResource( 1 )]
+elementTexture = SubResource( 1 )
+infantTexture = SubResource( 1 )
+infantTileName = "water"
+evolvedTileName = "water"
+grown = true
+scoreName = PoolStringArray( "tree", "berry_bush", "bird" )
+scoreGiven = PoolIntArray( 10, 10, 10 )
+currentScoreTiles = PoolIntArray( 0, 0, 0 )
+
+[node name="Sprite" parent="." index="1"]
+texture = SubResource( 2 )

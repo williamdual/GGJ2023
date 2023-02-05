@@ -4,18 +4,22 @@
 [ext_resource path="res://Scenes/Tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/ElementSprites/bird.png" type="Texture" id=3]
 
+<<<<<<< Updated upstream:Project/Scenes/egg.tscn
 [node name="Tile" instance=ExtResource( 2 )]
+=======
+[node name="Tile2" instance=ExtResource( 2 )]
+>>>>>>> Stashed changes:Project/Scenes/Element Scenes/egg.tscn
 elementTexture = ExtResource( 3 )
 infantTexture = ExtResource( 1 )
 infantTileName = "egg"
 evolvedTileName = "bird"
 grown = true
 evolveName = PoolStringArray( "tree" )
-evolveRequiredAmounts = PoolIntArray( 1 )
+evolveRequiredAmounts = PoolIntArray( 3 )
 evolveRanges = PoolIntArray( 2 )
 currentEvolveTiles = PoolIntArray( 0 )
 scoreName = PoolStringArray( "bird" )
 scoreGiven = PoolIntArray( 15 )
 currentScoreTiles = PoolIntArray( 0 )
 raffleNamesToAdd = PoolStringArray( "egg" )
-raffleNumsToAdd = PoolIntArray( 1 )
+raffleNumsToAdd = PoolIntArray( 2 )
