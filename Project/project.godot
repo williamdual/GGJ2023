@@ -17,8 +17,7 @@ config/icon="res://icon.png"
 [display]
 
 window/size/width=640
-window/size/height=612
-window/stretch/mode="viewport"
+window/size/height=512
 
 [gui]
 
