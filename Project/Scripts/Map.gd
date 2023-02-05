@@ -141,3 +141,11 @@ func _on_GameManager_player_chose(n):
 func _process(delta):
 	if choosing: 
 		highlight_free()
+	else:
+		highlight_none()
+		
+func highlight_none():
+	for x in range(width):
+		for y in range(height):
+			if tile_types[x][y].getName() == "Grass":
+				tile_types[x][y].highlight_off()

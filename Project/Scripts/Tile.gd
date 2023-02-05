@@ -69,6 +69,7 @@ func newTileWithinRange(newTile, tileRange):
 		if(evolveName[i] == newTile and tileRange <= evolveRanges[i]):
 			currentEvolveTiles[i]+=1
 	if(canGrow()):
+		print("growing")
 		grow()
 	for i in range(scoreName.size()):
 		if(scoreName[i] == newTile):
