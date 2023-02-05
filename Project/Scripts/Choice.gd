@@ -13,7 +13,7 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if(event is InputEventMouseButton and event.pressed):
 		$Area2D/Hightlight.visible = true
 		checked = !checked
-		self.get_parent().pickElement(elementName)
+		self.get_parent().pickElement(elementName, checked)
 
 func _on_Area2D_mouse_exited():
 	if(!checked):

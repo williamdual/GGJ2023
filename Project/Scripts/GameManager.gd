@@ -61,14 +61,17 @@ func drawHand():
 		add_child(child)
 		cntr+=1
 
-func pickElement(n):
+func pickElement(n, checked):
 	playSelectElementSound()
 	for i in currentHand:
 		if i != n:
 			i = "choice"+i
 			get_node(i).checked = false 
 			get_node(i).get_node("Area2D").get_node("Hightlight").visible = false
-	emit_signal("player_chose", n)
+	if(checked):
+		emit_signal("player_chose", n)
+	else:
+		emit_signal("unclicked")
 
 
 
