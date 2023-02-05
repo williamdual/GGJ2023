@@ -6,9 +6,9 @@ export (Texture) var infantTexture
 var grassTexture = "res://Sprites/Grass.png"
 var score = 0
 #state management
-export var infantTileName:String = "name"
-export var evolvedTileName:String = "name"
-var tileName
+export var infantTileName:String = "Grass"
+export var evolvedTileName:String = "Grass"
+var tileName = "Grass"
 export var grown = false
 var isGrass = false
 var hasElement = false
@@ -36,7 +36,7 @@ signal add_to_raffle
 #score for new element
 func _ready():
 	tileName = infantTileName
-	#$Sprite.texture = infantTexture
+	$Sprite.texture = infantTexture
 	add_to_group("Tiles")
 	if(isGrass):
 		$Sprite.texture = grassTexture
@@ -46,7 +46,7 @@ func _ready():
 func grow(): 
 	#need to unlock score
 	tileName = evolvedTileName
-	#$Sprite.texture = elementTexture
+	$Sprite.texture = elementTexture
 	grown = true 
 	updateScore(score)
 	#tell game manager to add raffle if needed
@@ -92,9 +92,14 @@ func getName() -> String:
 func getPos() -> Array:
 	return pos
 
-
-func _on_Area2D_mouse_entered():
+func highlight_off():
+	$Area2D/Hightlight.visible = false
+	
+func highlight_on():
 	$Area2D/Hightlight.visible = true
 
+func _on_Area2D_mouse_entered():
+	highlight_on()
+
 func _on_Area2D_mouse_exited():
-	$Area2D/Hightlight.visible = false
+	highlight_off()

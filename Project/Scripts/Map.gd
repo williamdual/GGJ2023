@@ -4,10 +4,10 @@ var tiles : Array #holds tile names
 var grid : Array #holds all tile positions 
 var tile_types : Array #holds the actual tile objects
 var tileSize : int  = 64
-var screen_width = 640	
+var screen_width :int 
 var screen_height = 512
-var width = screen_width/tileSize
-var height = screen_height/tileSize
+var width : int 
+var height : int  
 
 var tileEffectRange = 2
 var clickedTile = "Tile"
@@ -18,10 +18,20 @@ func get_tile_at():
 
 # shows all tiles where elements can be placed 
 func highlight_free():
+	for x in range(width):
+		for y in range(height):
+			print(tile_types[x][y].getName())
+			if tile_types[x][y].getName() == "Grass":
+				tile_types[x][y].highlight_on()
+			
 	return 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	screen_width  = get_viewport().get_visible_rect().size.x	
+	screen_height = get_viewport().get_visible_rect().size.y 
+	width  = screen_width/tileSize
+	height = screen_height/tileSize
 	connect("player_chose",self, "set_clicked")
 	init_grid()
 	populate_board()
@@ -31,6 +41,7 @@ func _ready():
 #get type from clicked tile (from available tiles to place on board) 
 func set_clicked(type):
 	clickedTile = type 
+	#highlight free tiles 
 	return
 
 
@@ -38,14 +49,19 @@ func set_clicked(type):
 func tile_placed(x,y,name):
 	var arrayx = x
 	var arrayy = y
+	var surroundingTiles : Array = []
 	x-=2
 	y-=2
 	for i in range(tileEffectRange*2):
 		for j in range(tileEffectRange*2):
 			if (x<0) or (x>= width) or (y<0) or (y >= height):
 				continue
-			tiles[x][y].new_tile_in_range(name, min(x,y))
+			tile_types[x][y].new_tile_in_range(name, min(abs(x),abs(y)))
+			#new tile gets affected too
+			tile_types[arrayx][arrayy].new_tile_in_range(name, min(abs(x), abs(y)))
+
 	clickedTile = ""
+	emit_signal("element_placed")
 	return #array	
 
 
@@ -58,7 +74,6 @@ func get_in_range(start_x,start_y, tile_range):
 			if (tilesInRange.has(tiles[x][y].getType())):
 				var elementType = tiles[x][y].getType()
 				tilesInRange[elementType] = tilesInRange[elementType] + 1
-
 	return tilesInRange
 
 func init_grid():
@@ -76,7 +91,7 @@ func populate_board():
 	for x in range(width):
 		tile_types.append([])
 		for y in range(height):
-			var tile_to_add = Tile.instance() 
+			var tile_to_add = load("res://Scenes/" + clickedTile + ".tscn").instance()
 			tile_to_add.position = grid[x][y]
 			tiles[x][y] = "Grass"
 			add_child(tile_to_add)
