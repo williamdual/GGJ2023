@@ -17,7 +17,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = 15.0
+volume_db = -50.0
 
 [node name="EvolutionStreamPlayer" type="AudioStreamPlayer" parent="."]
 
