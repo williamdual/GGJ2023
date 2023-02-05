@@ -61,7 +61,8 @@ func tile_placed(x,y,name):
 		for j in range(tileEffectRange*2):
 			if (x<0) or (x>= width) or (y<0) or (y >= height):
 				continue
-			tile_types[x][y].newTileWithinRange(name, min(abs(x),abs(y)))
+			if tile_types[x][y].getName() != "Grass":
+				tile_types[x][y].newTileWithinRange(name, min(abs(x),abs(y)))
 			#new tile gets affected too
 			tile_types[arrayx][arrayy].newTileWithinRange(name, (min(abs(x), abs(y))))
 
@@ -134,7 +135,6 @@ func spawn_tile():
 	tile_types[x_pos][y_pos] = tile_to_place
 	tiles[x_pos][y_pos] = clickedTile
 	add_child(tile_to_place)
-	
 	tile_placed(x_pos, y_pos, clickedTile)
 
 
