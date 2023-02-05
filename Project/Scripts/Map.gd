@@ -157,3 +157,8 @@ func elementEvolved(elemName, elemTileName):
 				tile_types[i][j].setName(elemTileName)
 				tile_placed(i, j, elemTileName)
 #name, tilename
+
+
+func _on_GameManager_unclicked():
+	clickedTile = ""
+	choosing = false
