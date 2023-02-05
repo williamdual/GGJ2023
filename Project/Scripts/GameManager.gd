@@ -17,7 +17,7 @@ var choice = load("res://Scenes/Choice.tscn")
 var win_size
 #GM stuff
 var score = 0
-var gameOver = false
+
 #signal stuff
 #signal add_to_raffle
 #signal add_score
@@ -29,6 +29,10 @@ func _ready():
 	#choice background stuff
 	get_node("ChoiceBackgroundSprite").global_position = Vector2(win_size.x/2, win_size.y-46)
 	get_node("ChoiceBackgroundSprite").scale = Vector2(2,2)
+	#signal connections
+	#connect("add_to_raffle", self,  "addLoto")
+	#connect("add_score", self, "addToScore")
+	#connect("element_placed", self, "setTimerForNextTurn")
 	initalizeLotoPool()
 	#startTurn()
 
@@ -99,13 +103,11 @@ func initalizeLotoPool(): #named after adult stage, if has any
 	#etc etc
 
 func _on_Board_element_placed():
-	if(!gameOver):
-		setTimerForNextTurn()
+	setTimerForNextTurn()
 
 func _on_TurnTimer_timeout():
-	if(!gameOver):
-		playNewRoundSound()
-		startTurn()
+	playNewRoundSound()
+	startTurn()
 
 func playPlacementSound():
 	$AudioStreamPlayer.volume_db = 4
@@ -127,7 +129,3 @@ func playEvolveSound():
 
 func _on_BackgroundStreamPlayer_finished():
 	$BackgroundStreamPlayer.play()
-
-
-func _on_board_full():
-	gameOver = true

@@ -8,7 +8,7 @@ var screen_width :int
 var screen_height : int
 var width : int 
 var height : int  
-var tilesPlaced : int = 0 
+
 var tileEffectRange = 2
 var clickedTile = "Tile"
 var Tile = preload("res://Scenes/Element Scenes/Tile.tscn")
@@ -17,7 +17,6 @@ var choosing = false
 
 
 signal element_placed
-signal board_full
 
 func get_tile_at():
 	return
@@ -111,7 +110,7 @@ func _input(event):
 			var x_pos = get_viewport().get_mouse_position().x
 			var y_pos = get_viewport().get_mouse_position().y
 			if within_x_bounds(x_pos) and within_y_bounds(y_pos): 
-				if tile_types[floor((x_pos)/tileSize)][floor((y_pos)/tileSize)].getName() == "Grass":
+				if tile_types[floor(x_pos)/tileSize][floor(y_pos)/tileSize].getName() == "Grass":
 					spawn_tile()
 					choosing = !choosing
 	
@@ -133,9 +132,7 @@ func spawn_tile():
 	tiles[x_pos][y_pos] = clickedTile
 	add_child(tile_to_place)
 	tile_placed(x_pos, y_pos, clickedTile)
-	tilesPlaced+=1
-	if(tilesPlaced >= width*height): #When board is full
-		emit_signal("board_full")
+
 
 func _on_GameManager_player_chose(n):
 	set_clicked(n)
@@ -164,4 +161,3 @@ func elementEvolved(elemName, elemTileName):
 func _on_GameManager_unclicked():
 	clickedTile = ""
 	choosing = false
-
