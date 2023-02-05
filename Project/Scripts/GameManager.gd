@@ -22,7 +22,7 @@ var score = 0
 #signal add_to_raffle
 #signal add_score
 signal player_chose
-
+signal unclicked
 
 func _ready():
 	win_size = get_viewport().get_visible_rect().size
