@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Cardholder.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/ElementSprites/rootTipPlaceholder.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/roots.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/roots2.png" type="Texture" id=4]
 
 [sub_resource type="Gradient" id=1]
 
@@ -15,7 +16,7 @@ resource_name = "Pulse"
 length = 3.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2:modulate")
+tracks/0/path = NodePath("Roots/RootsBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -24,10 +25,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.1, 1.5, 2.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.976471, 0.780392, 0.0156863, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.917647, 0.564706, 0.470588, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite2:scale")
+tracks/1/path = NodePath("Roots/RootsBackground:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -36,7 +37,22 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1.2 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Shift"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Roots:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -263.718, -12.521 ) ]
 }
 
 [node name="GameManager" type="Node2D"]
@@ -61,12 +77,19 @@ texture = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ChoiceBackgroundSprite"]
 method_call_mode = 1
 anims/Pulse = SubResource( 3 )
+anims/Shift = SubResource( 4 )
 
-[node name="Sprite2" type="Sprite" parent="ChoiceBackgroundSprite"]
-modulate = Color( 0.993141, 0.935985, 0.713077, 1 )
-position = Vector2( -137.77, -28.8945 )
-scale = Vector2( 1, 1.06775 )
+[node name="Roots" type="Sprite" parent="ChoiceBackgroundSprite"]
+show_behind_parent = true
+position = Vector2( 0.454666, -8.66835 )
+scale = Vector2( 1.9649, 2.74023 )
 texture = ExtResource( 3 )
+
+[node name="RootsBackground" type="Sprite" parent="ChoiceBackgroundSprite/Roots"]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+position = Vector2( -7.62939e-06, 0.527229 )
+texture = ExtResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -50.0

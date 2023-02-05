@@ -22,7 +22,7 @@ var score = 0
 #signal add_to_raffle
 #signal add_score
 signal player_chose
-
+signal evolve_branches
 
 func _ready():
 	win_size = get_viewport().get_visible_rect().size
@@ -123,3 +123,11 @@ func playEvolveSound():
 	$EvolutionStreamPlayer.volume_db = 0
 	$EvolutionStreamPlayer.stream = evolveSound
 	$EvolutionStreamPlayer.play()
+	if $ChoiceBackgroundSprite/Roots.position.x  <= -9:
+		for x in range(10):
+			$ChoiceBackgroundSprite/Roots.position.x += 10
+			yield(get_tree().create_timer(.05), "timeout")
+
+func _delta():
+	if $ChoiceBackgroundSprite/Roots.position.x > 0: 
+		$ChoiceBackgroundSprite/Roots.position.x = 0

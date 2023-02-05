@@ -15,7 +15,7 @@ var Tile = preload("res://Scenes/Element Scenes/Tile.tscn")
 
 var choosing = false
 
-
+signal move_branches
 signal element_placed
 
 func get_tile_at():
@@ -157,3 +157,12 @@ func elementEvolved(elemName, elemTileName):
 				tile_types[i][j].setName(elemTileName)
 				tile_placed(i, j, elemTileName)
 #name, tilename
+
+
+func _on_Tile_evolved():
+	print("received")
+	emit_signal("move_branches")
+
+
+func _on_Tile2_evolved():
+	pass # Replace with function body.

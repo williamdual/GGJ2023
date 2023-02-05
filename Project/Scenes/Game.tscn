@@ -8,5 +8,7 @@
 [node name="GameManager" parent="." instance=ExtResource( 1 )]
 
 [node name="Board" parent="." instance=ExtResource( 2 )]
+visible = true
 
 [connection signal="player_chose" from="GameManager" to="Board" method="_on_GameManager_player_chose"]
+[connection signal="move_branches" from="Board" to="GameManager" method="_on_Board_move_branches"]
