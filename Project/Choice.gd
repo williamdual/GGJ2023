@@ -6,11 +6,10 @@ var elementName = ""
 func _ready():
 	pass # Replace with function body.
 
-
-func _input(event):
-	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_LEFT):
-		self.get_parent().pickElement(name)
-
-	
 func setName(n):
 	elementName = n
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	if(event is InputEventMouseButton):
+		$Area2D/Hightlight.visible = true
+		self.get_parent().pickElement(name)
