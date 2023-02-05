@@ -1,8 +1,8 @@
 extends Node2D
 
 var placementSound = load("res://Sounds/fishy.wav")
-var newRoundSound = load("res://Sounds/cherp.wav")
-var selectElementSound = load("res://Sounds/selectElement.wav")
+var newRoundSound = load("res://Sounds/pop1.wav")
+var selectElementSound = load("res://Sounds/selectElt.wav")
 var evolveSound = load("res://Sounds/construction.wav")
 
 #loto stuff
@@ -107,18 +107,18 @@ func _on_TurnTimer_timeout():
 	startTurn()
 
 func playPlacementSound():
-	$AudioStreamPlayer.volume_db = 15
+	$AudioStreamPlayer.volume_db = -4
 	$AudioStreamPlayer.stream = placementSound
 	$AudioStreamPlayer.play()
 func playNewRoundSound():
-	$AudioStreamPlayer.volume_db = -2
+	$AudioStreamPlayer.volume_db = -24
 	$AudioStreamPlayer.stream = newRoundSound
 	$AudioStreamPlayer.play()
 func playSelectElementSound():
-	$AudioStreamPlayer.volume_db = 15
+	$AudioStreamPlayer.volume_db = 0
 	$AudioStreamPlayer.stream = selectElementSound
 	$AudioStreamPlayer.play()
 func playEvolveSound():
-	$EvolutionStreamPlayer.volume_db = 12
+	$EvolutionStreamPlayer.volume_db = 0
 	$EvolutionStreamPlayer.stream = evolveSound
 	$EvolutionStreamPlayer.play()
