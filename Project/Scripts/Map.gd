@@ -13,6 +13,8 @@ var tileEffectRange = 2
 var clickedTile = "Tile"
 var Tile = preload("res://Scenes/Tile.tscn")
 
+signal player_chose
+
 func get_tile_at():
 	return
 
@@ -35,7 +37,6 @@ func _ready():
 	connect("player_chose",self, "set_clicked")
 	init_grid()
 	populate_board()
-	print(tile_types[3][4].getName())
 	return 
 
 #get type from clicked tile (from available tiles to place on board) 
