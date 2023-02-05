@@ -36,6 +36,7 @@ func _ready():
 	screen_height = get_viewport().get_visible_rect().size.y - 100
 	width  = screen_width/tileSize
 	height = screen_height/tileSize
+	connect("player_chose",self, "set_clicked")
 	init_grid()
 	populate_board()
 	return 
