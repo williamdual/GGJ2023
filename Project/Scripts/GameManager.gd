@@ -10,6 +10,7 @@ var rng = RandomNumberGenerator.new()
 #choice stuff
 var spritePath = "res://Sprites/ElementSprites/" #fill this in
 var choice = load("res://Scenes/Choice.tscn")
+var win_size
 #GM stuff
 var score = 0
 
@@ -21,6 +22,10 @@ signal player_chose
 
 
 func _ready():
+	win_size = get_viewport().get_visible_rect().size
+	#choice background stuff
+	get_node("ChoiceBackgroundSprite").global_position = Vector2(win_size.x/2, win_size.y-46)
+	get_node("ChoiceBackgroundSprite").scale = Vector2(2,2)
 	#signal connections
 	connect("add_to_raffle", self,  "addLoto")
 	connect("add_score", self, "addToScore")
@@ -39,7 +44,6 @@ func setTimerForNextTurn():
 #hide haha
 func drawHand():
 	var cntr = 0
-	var win_size = get_viewport().get_visible_rect().size
 	for i in handSize:
 		var child = choice.instance()
 		child.get_node("Sprite").texture = load(spritePath+"/"+str(currentHand[cntr])+".png")
