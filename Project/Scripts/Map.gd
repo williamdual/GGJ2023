@@ -4,10 +4,10 @@ var tiles : Array #holds tile names
 var grid : Array #holds all tile positions 
 var tile_types : Array #holds the actual tile objects
 var tileSize : int  = 64
-var screen_width = 640	
+var screen_width :int 
 var screen_height = 512
-var width = screen_width/tileSize
-var height = screen_height/tileSize
+var width : int 
+var height : int  
 
 var tileEffectRange = 2
 var clickedTile = "Tile"
@@ -28,6 +28,10 @@ func highlight_free():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	screen_width  = get_viewport().get_visible_rect().size.x	
+	screen_height = get_viewport().get_visible_rect().size.y 
+	width  = screen_width/tileSize
+	height = screen_height/tileSize
 	connect("player_chose",self, "set_clicked")
 	init_grid()
 	populate_board()
