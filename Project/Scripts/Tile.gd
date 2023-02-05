@@ -30,11 +30,16 @@ export var raffleNumsToAdd:PoolIntArray = []
 #signals
 signal add_score
 signal add_to_raffle
-#TODO tile that is being placed has no info on what is around it
+signal element_evolved
+
+#TODO ELEMENT_EVOLVED SIGNAL
 
 # Called when the node enters the scene tree for the first time.
 #score for new element
 func _ready():
+	connect("add_score", get_node("../../GameManager"), "addToScore")
+	connect("add_to_raffle", get_node("../../GameManager"),  "addLoto")
+	connect("element_evolved", get_node("../../GameManager"),  "playEvolveSound")
 	tileName = infantTileName
 	$Sprite.texture = infantTexture
 	add_to_group("Tiles")
@@ -51,6 +56,7 @@ func grow():
 	grown = true 
 	updateScore(score)
 	#tell game manager to add raffle if needed
+	emit_signal("element_evolved")
 	for i in range(raffleNamesToAdd.size()):
 		emit_signal("add_to_raffle", raffleNamesToAdd[i], raffleNumsToAdd[i])
 
@@ -61,14 +67,10 @@ func canGrow() -> bool: #checks all of the conditions agenst the map
 		if(currentEvolveTiles[i] < evolveRequiredAmounts[i]):
 			allGood = false
 			break
-	print(tileName + " can grow: " + str(allGood))
 	return allGood
 
-#update score!
 func newTileWithinRange(newTile, tileRange):
 	#is this tile relevant to me? evolve, score
-	$GrassSprite.visible = false
-	print(tileName + " got this tile within range " + str(tileRange) + ": " + newTile)
 	for i in range(evolveName.size()):
 		if(evolveName[i] == newTile and tileRange <= evolveRanges[i]):
 			currentEvolveTiles[i]+=1

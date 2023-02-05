@@ -1,5 +1,9 @@
 extends Node2D
 
+var placementSound = load("res://Sounds/fishy.wav")
+var newRoundSound = load("res://Sounds/ceryp.wav")
+var selectElementSound = load("res://Sounds/selectElement.wav")
+var evolveSound = load("res://Sounds/construction.wav")
 
 #loto stuff
 var lotoPool = []
@@ -15,8 +19,8 @@ var win_size
 var score = 0
 
 #signal stuff
-signal add_to_raffle
-signal add_score
+#signal add_to_raffle
+#signal add_score
 signal player_chose
 
 
@@ -26,9 +30,9 @@ func _ready():
 	get_node("ChoiceBackgroundSprite").global_position = Vector2(win_size.x/2, win_size.y-46)
 	get_node("ChoiceBackgroundSprite").scale = Vector2(2,2)
 	#signal connections
-	connect("add_to_raffle", self,  "addLoto")
-	connect("add_score", self, "addToScore")
-	connect("element_placed", self, "setTimerForNextTurn")
+	#connect("add_to_raffle", self,  "addLoto")
+	#connect("add_score", self, "addToScore")
+	#connect("element_placed", self, "setTimerForNextTurn")
 	initalizeLotoPool()
 	#startTurn()
 
@@ -42,12 +46,14 @@ func setTimerForNextTurn():
 		get_node("choice"+str(i)).queue_free()
 	currentHand.clear()
 	$TurnTimer.start(.5);
+	playPlacementSound()
 
 #hide haha
 func drawHand():
 	var cntr = 0
 	for i in handSize:
 		var child = choice.instance()
+		print(str(spritePath+"/"+str(currentHand[cntr])+".png"))
 		child.get_node("Sprite").texture = load(spritePath+"/"+str(currentHand[cntr])+".png")
 		child.global_position = Vector2((win_size.x/2)-80+(cntr*80), win_size.y-50)
 		child.get_node("Sprite").scale = Vector2(4,4)
@@ -57,6 +63,7 @@ func drawHand():
 		cntr+=1
 
 func pickElement(n):
+	playSelectElementSound()
 	for i in currentHand:
 		if i != n:
 			i = "choice"+i
@@ -75,11 +82,14 @@ func drawLoto():
 		currentHand.append(c)
 
 func addLoto(toAdd:String, num:int):
+	print("adding " + str(num) + " " + toAdd + " entries to the raffle")
 	for i in num:
 		lotoPool.append(toAdd)
 
 func addToScore(scoreToAdd:int):
+	print("adding " + str(scoreToAdd) + " to the score")
 	score += scoreToAdd
+	print("TOTAL SCORE: " + str(score))
 
 func initalizeLotoPool(): #named after adult stage, if has any
 	for i in 5:
@@ -94,4 +104,18 @@ func _on_Board_element_placed():
 	setTimerForNextTurn()
 
 func _on_TurnTimer_timeout():
+	playNewRoundSound()
 	startTurn()
+
+func playPlacementSound():
+	$AudioStreamPlayer.stream = placementSound
+	$AudioStreamPlayer.play()
+func playNewRoundSound():
+	$AudioStreamPlayer.stream = newRoundSound
+	$AudioStreamPlayer.play()
+func playSelectElementSound():
+	$AudioStreamPlayer.stream = selectElementSound
+	$AudioStreamPlayer.play()
+func playEvolveSound():
+	$AudioStreamPlayer.stream = evolveSound
+	$AudioStreamPlayer.play()

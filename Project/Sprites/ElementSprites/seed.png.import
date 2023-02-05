@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/berry_seed.png-ca477a799ffd3119fcd87dd96ef87269.stex"
+path="res://.import/seed.png-e785cf30da4819accfc604370a05b3fc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ElementSprites/berry_seed.png"
-dest_files=[ "res://.import/berry_seed.png-ca477a799ffd3119fcd87dd96ef87269.stex" ]
+source_file="res://Sprites/ElementSprites/seed.png"
+dest_files=[ "res://.import/seed.png-e785cf30da4819accfc604370a05b3fc.stex" ]
 
 [params]
 
