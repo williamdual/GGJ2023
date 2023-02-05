@@ -2,7 +2,5 @@
 
 [ext_resource path="res://Scripts/Map.gd" type="Script" id=1]
 
-[node name="Board" type="Node2D"]
-
-[node name="Grid" type="Node2D" parent="."]
+[node name="Grid" type="Node2D"]
 script = ExtResource( 1 )
