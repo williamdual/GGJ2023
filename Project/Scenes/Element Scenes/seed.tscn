@@ -1,9 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Element Scenes/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/ElementSprites/seed.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/ElementSprites/berry_bush.png" type="Texture" id=3]
-
 
 [node name="Tile" instance=ExtResource( 1 )]
 elementTexture = ExtResource( 3 )
@@ -11,7 +10,7 @@ infantTexture = ExtResource( 2 )
 infantTileName = "seed"
 evolvedTileName = "berry_bush"
 evolveName = PoolStringArray( "water", "tree" )
-evolveRequiredAmounts = PoolIntArray( 2, 5 )
+evolveRequiredAmounts = PoolIntArray( 1, 1 )
 evolveRanges = PoolIntArray( 1, 1 )
 currentEvolveTiles = PoolIntArray( 0, 0 )
 scoreName = PoolStringArray( "bird" )

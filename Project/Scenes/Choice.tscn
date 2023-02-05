@@ -11,6 +11,7 @@ extents = Vector2( 31, 31.5 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2.1442, 1.47295 )
 z_index = 1
 
 [node name="GrassSprite" type="Sprite" parent="."]

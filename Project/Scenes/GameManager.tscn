@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Cardholder.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+
+[sub_resource type="GradientTexture2D" id=2]
+gradient = SubResource( 1 )
+fill_from = Vector2( 0, 1 )
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -13,8 +19,14 @@ autostart = true
 
 [node name="ChoiceBackgroundSprite" type="Sprite" parent="."]
 position = Vector2( 320, 466 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 2.19932, 2.07652 )
 texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="ChoiceBackgroundSprite"]
+show_behind_parent = true
+position = Vector2( -0.909378, 16.8551 )
+scale = Vector2( 4.99216, 1.39028 )
+texture = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -50.0
