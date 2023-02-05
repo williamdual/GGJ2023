@@ -10,7 +10,6 @@ var rng = RandomNumberGenerator.new()
 #choice stuff
 var spritePath = "res://Sprites/ElementSprites/" #fill this in
 var choice = load("res://Scenes/Choice.tscn")
-
 #GM stuff
 var score = 0
 
@@ -19,6 +18,8 @@ signal add_to_raffle
 signal add_score
 signal element_placed
 signal player_chose
+
+
 func _ready():
 	#signal connections
 	connect("add_to_raffle", self,  "addLoto")
