@@ -29,6 +29,7 @@ func _ready():
 	#choice background stuff
 	get_node("ChoiceBackgroundSprite").global_position = Vector2(win_size.x/2, win_size.y-46)
 	get_node("ChoiceBackgroundSprite").scale = Vector2(2,2)
+	$ChoiceBackgroundSprite/AnimationPlayer.play("Pulse")
 	#signal connections
 	#connect("add_to_raffle", self,  "addLoto")
 	#connect("add_score", self, "addToScore")

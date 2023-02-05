@@ -1,13 +1,43 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Cardholder.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/ElementSprites/rootTipPlaceholder.png" type="Texture" id=3]
 
 [sub_resource type="Gradient" id=1]
 
 [sub_resource type="GradientTexture2D" id=2]
 gradient = SubResource( 1 )
 fill_from = Vector2( 0, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Pulse"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1.5, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.976471, 0.780392, 0.0156863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.2 ), Vector2( 1, 1 ) ]
+}
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource( 1 )
@@ -27,6 +57,16 @@ show_behind_parent = true
 position = Vector2( -0.909378, -3.85262 )
 scale = Vector2( 4.99216, 1.39028 )
 texture = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChoiceBackgroundSprite"]
+method_call_mode = 1
+anims/Pulse = SubResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="ChoiceBackgroundSprite"]
+modulate = Color( 0.993141, 0.935985, 0.713077, 1 )
+position = Vector2( -137.77, -28.8945 )
+scale = Vector2( 1, 1.06775 )
+texture = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -50.0
