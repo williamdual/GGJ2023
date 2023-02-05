@@ -14,11 +14,18 @@ var choice = load("res://Choice.tscn")
 #GM stuff
 var score = 0
 
+#signal stuff
+signal add_to_raffle
+signal add_score
+signal element_placed
+signal player_chose
 func _ready():
 	#signal connections
 	connect("add_to_raffle", self,  "addLoto")
 	connect("add_score", self, "addToScore")
+	connect("element_placed", self, "setTimerForNExtTurn")
 	initalizeLotoPool()
+	#startTurn()
 
 
 func startTurn():
@@ -30,26 +37,33 @@ func setTimerForNextTurn():
 
 func drawHand():
 	var cntr = 0
+	var win_size = get_viewport().get_visible_rect().size
 	for i in handSize:
 		var child = choice.instance()
-		child.sprite.texture = load(spritePath+"/"+currentHand[cntr]+".png")
-		child.rect_global_position = Vector2(360+(cntr*40), 520)
-		child.scale = 2 
+		child.get_node("Sprite").texture = load(spritePath+"/"+str(currentHand[cntr])+".png")
+		child.global_position = Vector2((win_size.x/2)-80+(cntr*80), win_size.y-50)
+		child.get_node("Sprite").scale = Vector2(4,4)
 		child.setName(currentHand[i]) #name of element
-		child.name = "choice"+i #name of node in godot editor
+		child.name = "choice"+str(currentHand[i]) #name of node in godot editor
 		add_child(child)
 		cntr+=1
 
 func pickElement(n):
+	for i in currentHand:
+		i = "choice"+i
+		if i != n:
+			get_node(i).get_node("Area2D").get_node("Hightlight").visible = false
 	emit_signal("player_chose", n)
-	pass
 
 
 
 func drawLoto():
 	for i in handSize:
 		rng.randomize()
-		currentHand.append(rng.randi_range(0, lotoPool.size()-1))
+		var c = lotoPool[rng.randi_range(0, lotoPool.size()-1)]
+		while(c in currentHand):
+			c = lotoPool[rng.randi_range(0, lotoPool.size()-1)]
+		currentHand.append(c)
 
 func addLoto(toAdd:String, num:int):
 	for i in num:
@@ -63,5 +77,11 @@ func initalizeLotoPool(): #named after adult stage, if has any
 		lotoPool.append("water")
 	for i in 10:
 		lotoPool.append("acorn")
+	for i in 7:
+		lotoPool.append("egg")
 	#etc etc
 
+
+
+func _on_TurnTimer_timeout():
+	startTurn()

@@ -27,6 +27,9 @@ var currentScoreTiles:PoolIntArray = []
 export var raffleNamesToAdd:PoolStringArray = []
 export var raffleNumsToAdd:PoolIntArray = []
 
+#signals
+signal add_score
+signal add_to_raffle
 #TODO tile that is being placed has no info on what is around it
 
 # Called when the node enters the scene tree for the first time.
