@@ -18,11 +18,11 @@ var numTiles = 1 #number of this tile on the board
 export var evolveName:PoolStringArray = []
 export var evolveRequiredAmounts:PoolIntArray = []
 export var evolveRanges:PoolIntArray = []
-var currentEvolveTiles:PoolIntArray = []
+export var currentEvolveTiles:PoolIntArray = [] #init as 0
 
 export var scoreName:PoolStringArray = []
 export var scoreGiven:PoolIntArray = []
-var currentScoreTiles:PoolIntArray = []
+export var currentScoreTiles:PoolIntArray = [] #init as 0
 
 export var raffleNamesToAdd:PoolStringArray = []
 export var raffleNumsToAdd:PoolIntArray = []

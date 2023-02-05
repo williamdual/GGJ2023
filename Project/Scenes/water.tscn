@@ -10,4 +10,12 @@ infantTileName = "water"
 evolvedTileName = "water"
 grown = true
 scoreName = PoolStringArray( "deer" )
+<<<<<<< Updated upstream
 scoreGiven = PoolIntArray( 10 )
+=======
+scoreGiven = PoolIntArray( 10 )
+currentScoreTiles = PoolIntArray( 0 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
+>>>>>>> Stashed changes
