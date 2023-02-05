@@ -11,7 +11,7 @@ var height : int
 
 var tileEffectRange = 2
 var clickedTile = "Tile"
-var Tile = preload("res://Scenes/Tile.tscn")
+var Tile = preload("res://Scenes/Element Scenes/Tile.tscn")
 
 var choosing = false
 
@@ -96,7 +96,7 @@ func populate_board():
 	for x in range(width):
 		tile_types.append([])
 		for y in range(height):
-			var tile_to_add = load("res://Scenes/" + clickedTile + ".tscn").instance()
+			var tile_to_add = load("res://Scenes/Element Scenes/" + clickedTile + ".tscn").instance()
 			tile_to_add.position = grid[x][y]
 			tiles[x][y] = "Grass"
 			add_child(tile_to_add)
@@ -123,7 +123,7 @@ func within_y_bounds(y):
 
 
 func spawn_tile():
-	var tile = load("res://Scenes/" + clickedTile + ".tscn")
+	var tile = load("res://Scenes/Element Scenes/" + clickedTile + ".tscn")
 	var tile_to_place = tile.instance()
 	var x_pos = floor(get_viewport().get_mouse_position().x/tileSize)
 	var y_pos = floor(get_viewport().get_mouse_position().y/tileSize)
