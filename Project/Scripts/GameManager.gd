@@ -29,7 +29,7 @@ func _ready():
 	#signal connections
 	connect("add_to_raffle", self,  "addLoto")
 	connect("add_score", self, "addToScore")
-	connect("element_placed", self, "setTimerForNExtTurn")
+	connect("element_placed", self, "setTimerForNextTurn")
 	initalizeLotoPool()
 	#startTurn()
 
