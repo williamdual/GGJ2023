@@ -3,12 +3,12 @@ extends Node2D
 #Sprite Stuff
 export (Texture) var elementTexture
 export (Texture) var infantTexture
-var grassTexture = "res://Sprites/Grass.png"
+var grassTexture = "res://Sprites/grass.png"
 var score = 0
 #state management
-export var infantTileName:String = "Grass"
-export var evolvedTileName:String = "Grass"
-var tileName = "Grass"
+export var infantTileName:String = "grass"
+export var evolvedTileName:String = "grass"
+var tileName = "grass"
 export var grown = false
 var isGrass = false
 var hasElement = false
@@ -82,7 +82,7 @@ func newTileWithinRange(newTile, tileRange):
 	for i in range(evolveName.size()):
 		if(evolveName[i] == newTile and tileRange <= evolveRanges[i]):
 			currentEvolveTiles[i]+=1
-	if(not grown and not(tileName == "Grass")):
+	if(not grown and not(tileName == "grass")):
 		if(canGrow()):
 			grow()
 	for i in range(scoreName.size()):

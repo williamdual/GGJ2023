@@ -28,7 +28,7 @@ func get_tile_at():
 func highlight_free():
 	for x in range(width):
 		for y in range(height):
-			if tile_types[x][y].getName() == "Grass":
+			if tile_types[x][y].getName() == "grass":
 				tile_types[x][y].highlight_on()
 			
 	return 
@@ -101,7 +101,7 @@ func populate_board():
 		for y in range(height):
 			var tile_to_add = load("res://Scenes/Element Scenes/" + clickedTile + ".tscn").instance()
 			tile_to_add.position = grid[x][y]
-			tiles[x][y] = "Grass"
+			tiles[x][y] = "grass"
 			add_child(tile_to_add)
 			tile_types[x].append([])
 			tile_types[x][y] = tile_to_add
@@ -114,7 +114,7 @@ func _input(event):
 			var x_pos = get_viewport().get_mouse_position().x
 			var y_pos = get_viewport().get_mouse_position().y
 			if within_x_bounds(x_pos) and within_y_bounds(y_pos): 
-				if tile_types[floor((x_pos)/tileSize)][floor((y_pos)/tileSize)].getName() == "Grass":
+				if tile_types[floor((x_pos)/tileSize)][floor((y_pos)/tileSize)].getName() == "grass":
 					spawn_tile()
 					choosing = !choosing
 	
@@ -153,7 +153,7 @@ func _process(delta):
 func highlight_none():
 	for x in range(width):
 		for y in range(height):
-			if tile_types[x][y].getName() == "Grass":
+			if tile_types[x][y].getName() == "grass":
 				tile_types[x][y].highlight_off()
 
 func elementEvolved(elemName, elemTileName):
