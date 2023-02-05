@@ -35,10 +35,15 @@ func _ready():
 
 
 func startTurn():
+	print("sss")
 	drawLoto()
 	drawHand()
 
 func setTimerForNextTurn():
+	for i in currentHand:
+		get_node(i).queue_free()
+	currentHand.clear()
+	
 	$TurnTimer.start(2);
 
 #hide haha
