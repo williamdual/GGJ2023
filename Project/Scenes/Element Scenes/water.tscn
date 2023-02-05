@@ -2,13 +2,10 @@
 
 [ext_resource path="res://Scenes/Element Scenes/Tile.tscn" type="PackedScene" id=1]
 
-
 [sub_resource type="StreamTexture" id=1]
-flags = 4
 load_path = "res://.import/water.png-381437aaf66f5382afc55e012e1fd73e.stex"
 
 [sub_resource type="StreamTexture" id=2]
-flags = 4
 load_path = "res://.import/water.png-381437aaf66f5382afc55e012e1fd73e.stex"
 
 [node name="Tile" instance=ExtResource( 1 )]
@@ -17,9 +14,9 @@ infantTexture = SubResource( 1 )
 infantTileName = "water"
 evolvedTileName = "water"
 grown = true
-scoreName = PoolStringArray( "deer" )
-scoreGiven = PoolIntArray( 10 )
-currentScoreTiles = PoolIntArray( 0 )
+scoreName = PoolStringArray( "berry_bush", "bird", "tree" )
+scoreGiven = PoolIntArray( 10, 10, 10 )
+currentScoreTiles = PoolIntArray( 0, 0, 0 )
 
 [node name="Sprite" parent="." index="1"]
 texture = SubResource( 2 )

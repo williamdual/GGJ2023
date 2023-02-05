@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Element Scenes/Tile.tscn" type="PackedScene" id=1]
-
+[ext_resource path="res://Sprites/ElementSprites/mushroom.png" type="Texture" id=2]
 
 [node name="Tile" instance=ExtResource( 1 )]
+elementTexture = ExtResource( 2 )
+infantTexture = ExtResource( 2 )
+infantTileName = "mushroom"
+evolvedTileName = "mushroom"
+grown = true
+scoreName = PoolStringArray( "rabbit", "mice", "bird", "wolf", "squirrels" )
+scoreGiven = PoolIntArray( 20, 15, 10, 30, 15 )
+currentScoreTiles = PoolIntArray( 0, 0, 0, 0, 0 )

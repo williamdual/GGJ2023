@@ -94,13 +94,16 @@ func addToScore(scoreToAdd:int):
 	print("TOTAL SCORE: " + str(score))
 
 func initalizeLotoPool(): #named after adult stage, if has any
-	for i in 5:
+	for i in 8:
 		lotoPool.append("water")
-	for i in 10:
+	for i in 5:
 		lotoPool.append("acorn")
-	for i in 7:
+	for i in 2:
 		lotoPool.append("egg")
-	#etc etc
+	for i in 1:
+		lotoPool.append("mushroom")
+	for i in 2:
+		lotoPool.append("seed")
 
 func _on_Board_element_placed():
 	setTimerForNextTurn()

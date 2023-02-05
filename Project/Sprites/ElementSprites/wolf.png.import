@@ -2,25 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/squirrel_.png-aa638ba6c7cfea6af9a39cbeb3e29577.stex"
+path="res://.import/wolf.png-8707f83861828891f6f62835db8a3e70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ElementSprites/squirrel_.png"
-dest_files=[ "res://.import/squirrel_.png-aa638ba6c7cfea6af9a39cbeb3e29577.stex" ]
+source_file="res://Sprites/ElementSprites/wolf.png"
+dest_files=[ "res://.import/wolf.png-8707f83861828891f6f62835db8a3e70.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
