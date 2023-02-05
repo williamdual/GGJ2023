@@ -42,8 +42,9 @@ func _ready():
 #get type from clicked tile (from available tiles to place on board) 
 func set_clicked(type):
 	clickedTile = type 
-	#highlight free tiles 
+	print(clickedTile)
 	return
+
 
 
 #will send a signal to every single element in the range 
@@ -127,3 +128,7 @@ func spawn_tile():
 	tiles[x_pos][y_pos] = clickedTile
 	add_child(tile_to_place)
 	tile_placed(x_pos, y_pos, clickedTile)
+
+
+func _on_GameManager_player_chose(n):
+	set_clicked(n)

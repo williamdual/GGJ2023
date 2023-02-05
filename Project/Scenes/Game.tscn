@@ -8,3 +8,5 @@
 [node name="Board" parent="." instance=ExtResource( 2 )]
 
 [node name="GameManager" parent="." instance=ExtResource( 1 )]
+
+[connection signal="player_chose" from="GameManager" to="Board" method="_on_GameManager_player_chose"]
