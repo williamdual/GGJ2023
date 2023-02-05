@@ -27,7 +27,7 @@ signal unclicked
 func _ready():
 	win_size = get_viewport().get_visible_rect().size
 	#choice background stuff
-	get_node("ChoiceBackgroundSprite").global_position = Vector2(win_size.x/2, win_size.y-60)
+	get_node("ChoiceBackgroundSprite").global_position = Vector2(win_size.x/2, win_size.y-50)
 	get_node("ChoiceBackgroundSprite").scale = Vector2(3,3)
 	$ChoiceBackgroundSprite/AnimationPlayer.play("Pulse")
 	#connect("add_to_raffle", self,  "addLoto")
@@ -45,7 +45,7 @@ func setTimerForNextTurn():
 	for i in currentHand:
 		get_node("choice"+str(i)).queue_free()
 	currentHand.clear()
-	$TurnTimer.start(.95);
+	$TurnTimer.start(.75);
 	playPlacementSound()
 
 #hide haha
@@ -54,7 +54,7 @@ func drawHand():
 	for i in handSize:
 		var child = choice.instance()
 		child.get_node("Sprite").texture = load(spritePath+"/"+str(currentHand[cntr])+".png")
-		child.global_position = Vector2((win_size.x/2)-80+(cntr*80), win_size.y-60)
+		child.global_position = Vector2((win_size.x/2)-80+(cntr*80), win_size.y-50)
 		child.get_node("Sprite").scale = Vector2(4,4)
 		child.setName(currentHand[i]) #name of element
 		child.name = "choice"+str(currentHand[i]) #name of node in godot editor
