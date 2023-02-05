@@ -17,7 +17,6 @@ var score = 0
 #signal stuff
 signal add_to_raffle
 signal add_score
-signal element_placed
 signal player_chose
 func _ready():
 	#signal connections
@@ -83,7 +82,9 @@ func initalizeLotoPool(): #named after adult stage, if has any
 		lotoPool.append("egg")
 	#etc etc
 
-
+func _on_Board_element_placed():
+	print("signal received")
+	setTimerForNextTurn()
 
 func _on_TurnTimer_timeout():
 	startTurn()

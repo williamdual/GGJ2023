@@ -16,7 +16,7 @@ var Tile = preload("res://Scenes/Tile.tscn")
 var choosing = false
 
 
-signal player_chose
+signal element_placed
 
 func get_tile_at():
 	return
@@ -105,7 +105,7 @@ func populate_board():
 			tile_types[x][y] = tile_to_add
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.pressed:
 		if clickedTile == "":
 			return
 		if choosing: 
